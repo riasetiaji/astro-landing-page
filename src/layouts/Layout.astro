@@ -1,0 +1,173 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+import { SEO } from "astro-seo";
+
+
+//Image
+import { Image } from 'astro:assets';
+import logo from '../images/logo/logo.png';
+import facebook from '../images/logo/facebook.png';
+import linkedin from '../images/logo/linkedin.png';
+import instagram from '../images/logo/instagram.png';
+import tiktok from '../images/logo/tiktok.png';
+import twitter from '../images/logo/twitter.png';
+
+//CSS Tambahan
+import '../components/style.css';
+
+// Google Font Optimizer
+//import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
+
+// Social share
+import { SocialShare } from "astro-social-share";
+
+// Astroo Hero Icons
+import Sparkles from 'astro-heroicons/outline/Sparkles.astro';
+
+---
+
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- SEO (Search Engine Optimization) ---------------------------------------------------------------------------------------------- -->
+		<SEO
+      		title="Astro Jersey Sport"
+    		  description="The best jersey printing manufacturer with premium quality. Any design you like and ready to send throughout Indonesia and abroad. (Produsen printing jersey terbaik dengan kualitas premium. Desain suka-suka dan siap kirim ke seluruh Indonesia hingga luar negri.)"
+			  openGraph={{
+    		    basic: {
+    		      title: "Astro Jersey Sport",
+    		      type: "website",
+    		      image: logo.src,
+    		    }
+    		  }}
+    		  twitter={{
+    		    creator: "@astro_jersey_sport"
+    		  }}
+    		  extend={{
+    		    // extending the default link tags
+    		    link: [{ rel: "icon", href: logo.src }],
+    		    // extending the default meta tags
+    		    meta: [
+    		    	// Metadata untuk Facebook
+					{ property: "og:image", content: facebook.src },
+      				{ property: "og:title", content: "Astro Jersey Sport Facebook" },
+      				{ property: "og:description", content: "The best jersey printing manufacturer with premium quality. Any design you like and ready to send throughout Indonesia and abroad. (Produsen printing jersey terbaik dengan kualitas premium. Desain suka-suka dan siap kirim ke seluruh Indonesia hingga luar negri.)" },
+
+					// Metadata untuk LinkedIn
+					{ property: "og:image", content: linkedin.src },
+      				{ property: "og:title", content: "Astro Jersey Sport LinkedIn" },
+      				{ property: "og:description", content: "The best jersey printing manufacturer with premium quality. Any design you like and ready to send throughout Indonesia and abroad. (Produsen printing jersey terbaik dengan kualitas premium. Desain suka-suka dan siap kirim ke seluruh Indonesia hingga luar negri.)" },
+
+      				// Metadata untuk Instagram
+      				{ property: "og:image", content: instagram.src },
+      				{ property: "og:title", content: "Astro Jersey Sport Instagram" },
+      				{ property: "og:description", content: "The best jersey printing manufacturer with premium quality. Any design you like and ready to send throughout Indonesia and abroad. (Produsen printing jersey terbaik dengan kualitas premium. Desain suka-suka dan siap kirim ke seluruh Indonesia hingga luar negri.)" },
+
+      				// Metadata untuk TikTok
+      				{ property: "og:image", content: tiktok.src },
+      				{ property: "og:title", content: "Astro Jersey Sport TikTok" },
+      				{ property: "og:description", content: "The best jersey printing manufacturer with premium quality. Any design you like and ready to send throughout Indonesia and abroad. (Produsen printing jersey terbaik dengan kualitas premium. Desain suka-suka dan siap kirim ke seluruh Indonesia hingga luar negri.)" },
+				
+					// Metadata untuk Twitter
+					{ property: "og:image", content: twitter.src },
+      				{ property: "og:title", content: "Astro Jersey Sport Twitter" },
+      				{ property: "og:description", content: "The best jersey printing manufacturer with premium quality. Any design you like and ready to send throughout Indonesia and abroad. (Produsen printing jersey terbaik dengan kualitas premium. Desain suka-suka dan siap kirim ke seluruh Indonesia hingga luar negri.)" },
+				],
+    		  }}
+    		/>
+		
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		
+		<!-- Google Font Optimizer --------------------------------------------------------------------------------------------------------- -->
+		<!-- <GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;700&display=swap">
+		</GoogleFontsOptimizer>
+		<link rel="preconnect" href="https://fonts.bunny.net" crossorigin="anonymous">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    	<style type="text/css">@font-face {font-family: 'Inter';font-style: normal;font-weight: 200;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyfMZs.woff) format('woff');}@font-face {font-family: 'Inter';font-style: normal;font-weight: 400;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZs.woff) format('woff');}@font-face {font-family: 'Inter';font-style: normal;font-weight: 500;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fMZs.woff) format('woff');}@font-face {font-family: 'Inter';font-style: normal;font-weight: 700;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYMZs.woff) format('woff');} /* cyrillic-ext */@font-face {font-family: 'Inter';font-style: normal;font-weight: 200;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyfAZJhiI2B.woff2) format('woff2');unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}/* cyrillic */@font-face {font-family: 'Inter';font-style: normal;font-weight: 200;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyfAZthiI2B.woff2) format('woff2');unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}/* greek-ext */@font-face {font-family: 'Inter';font-style: normal;font-weight: 200;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyfAZNhiI2B.woff2) format('woff2');unicode-range: U+1F00-1FFF;}/* greek */@font-face {font-family: 'Inter';font-style: normal;font-weight: 200;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyfAZxhiI2B.woff2) format('woff2');unicode-range: U+0370-03FF;}/* vietnamese */@font-face {font-family: 'Inter';font-style: normal;font-weight: 200;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyfAZBhiI2B.woff2) format('woff2');unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}/* latin-ext */@font-face {font-family: 'Inter';font-style: normal;font-weight: 200;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyfAZFhiI2B.woff2) format('woff2');unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}/* latin */@font-face {font-family: 'Inter';font-style: normal;font-weight: 200;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyfAZ9hiA.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}/* cyrillic-ext */@font-face {font-family: 'Inter';font-style: normal;font-weight: 400;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZJhiI2B.woff2) format('woff2');unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}/* cyrillic */@font-face {font-family: 'Inter';font-style: normal;font-weight: 400;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZthiI2B.woff2) format('woff2');unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}/* greek-ext */@font-face {font-family: 'Inter';font-style: normal;font-weight: 400;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZNhiI2B.woff2) format('woff2');unicode-range: U+1F00-1FFF;}/* greek */@font-face {font-family: 'Inter';font-style: normal;font-weight: 400;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZxhiI2B.woff2) format('woff2');unicode-range: U+0370-03FF;}/* vietnamese */@font-face {font-family: 'Inter';font-style: normal;font-weight: 400;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZBhiI2B.woff2) format('woff2');unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}/* latin-ext */@font-face {font-family: 'Inter';font-style: normal;font-weight: 400;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZFhiI2B.woff2) format('woff2');unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}/* latin */@font-face {font-family: 'Inter';font-style: normal;font-weight: 400;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}/* cyrillic-ext */@font-face {font-family: 'Inter';font-style: normal;font-weight: 500;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZJhiI2B.woff2) format('woff2');unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}/* cyrillic */@font-face {font-family: 'Inter';font-style: normal;font-weight: 500;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZthiI2B.woff2) format('woff2');unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}/* greek-ext */@font-face {font-family: 'Inter';font-style: normal;font-weight: 500;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZNhiI2B.woff2) format('woff2');unicode-range: U+1F00-1FFF;}/* greek */@font-face {font-family: 'Inter';font-style: normal;font-weight: 500;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZxhiI2B.woff2) format('woff2');unicode-range: U+0370-03FF;}/* vietnamese */@font-face {font-family: 'Inter';font-style: normal;font-weight: 500;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZBhiI2B.woff2) format('woff2');unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}/* latin-ext */@font-face {font-family: 'Inter';font-style: normal;font-weight: 500;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZFhiI2B.woff2) format('woff2');unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}/* latin */@font-face {font-family: 'Inter';font-style: normal;font-weight: 500;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fAZ9hiA.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}/* cyrillic-ext */@font-face {font-family: 'Inter';font-style: normal;font-weight: 700;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYAZJhiI2B.woff2) format('woff2');unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}/* cyrillic */@font-face {font-family: 'Inter';font-style: normal;font-weight: 700;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYAZthiI2B.woff2) format('woff2');unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}/* greek-ext */@font-face {font-family: 'Inter';font-style: normal;font-weight: 700;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYAZNhiI2B.woff2) format('woff2');unicode-range: U+1F00-1FFF;}/* greek */@font-face {font-family: 'Inter';font-style: normal;font-weight: 700;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYAZxhiI2B.woff2) format('woff2');unicode-range: U+0370-03FF;}/* vietnamese */@font-face {font-family: 'Inter';font-style: normal;font-weight: 700;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYAZBhiI2B.woff2) format('woff2');unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;}/* latin-ext */@font-face {font-family: 'Inter';font-style: normal;font-weight: 700;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYAZFhiI2B.woff2) format('woff2');unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;}/* latin */@font-face {font-family: 'Inter';font-style: normal;font-weight: 700;font-display: swap;src: url(https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYAZ9hiA.woff2) format('woff2');unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}</style> -->
+		<!-- Google Font Optimizer --------------------------------------------------------------------------------------------------------- -->
+
+		<link rel="icon" type="image/svg+xml" href="/logo.png" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="stylesheet" type="text/css" href="path/to/slick/slick.css"/>
+		<link rel="stylesheet" type="text/css" href="path/to/slick/slick-theme.css"/>
+		<title>{title}</title>
+	</head>
+	<body class="dark:bg-slate-800" style="margin-top: -10px; padding-top: 10px; margin-bottom: -10px; padding-bottom: 10px;">
+		<nav class="sticky shadow-lg z-50 top-0 right-0 left-0 justify-between flex flex-wrap p-3 bg-blue-500 m-5 dark:bg-slate-700 text-black rounded-lg">
+			<div class="container flex justify-between">
+				<div class="flex flex-wrap gap-3 items-center justify-between">
+					<div class="flex items-center">
+					<Image src={logo} alt="logo" width="40"/>
+					<p class="font-bold text-white hidden sm:inline-block text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">stro Jersey Sport</p>
+					</div>
+
+					<!-- Menu tampilan desktop ------------------------------------------------------------------------------------------------- -->
+					<div class="hidden sm:inline-block space-x-4">
+						<a class="py-2 px-3 font-bold hover:bg-gray-400 hover:text-white bg-white rounded-lg" href="#beranda">Beranda</a>
+						<a class="py-2 px-3 font-bold hover:bg-gray-400 hover:text-white bg-white rounded-lg" href="#promo">Promo</a>
+						<a class="py-2 px-3 font-bold hover:bg-gray-400 hover:text-white bg-white rounded-lg" href="#about">About</a>
+
+					</div>
+					<!-- Menu tampilan desktop ------------------------------------------------------------------------------------------------- -->
+
+					<!-- Menu tampilan mobile -------------------------------------------------------------------------------------------------- -->
+					<div class="sm:hidden inline-block content-center">
+						<button type="button" id="toggleButton" class="relative bg-white font-bold py-2 px-4 rounded dark:bg-slate-400">
+							MENU
+						</button>
+						<div class="relative">
+							<div class="absolute w-full" id="nav">
+								<a class="absolute py-2 px-3 w-full font-bold hover:bg-gray-400 hover:text-white bg-blue-200 rounded dark:bg-slate-400" style="margin-top: 9px" href="#beranda">Beranda</a>
+								<a class="absolute py-2 px-3 w-full font-bold hover:bg-gray-400 hover:text-white bg-blue-200 rounded dark:bg-slate-400" style="margin-top: 58px" href="#promo">Promo</a>
+								<a class="absolute py-2 px-3 w-full font-bold hover:bg-gray-400 hover:text-white bg-blue-200 rounded dark:bg-slate-400" style="margin-top: 107px" href="#about">About</a>
+							</div>
+						</div>
+					</div>
+					<!-- Menu tampilan mobile -------------------------------------------------------------------------------------------------- -->
+				</div>
+
+				<!-- Search -->
+				<form class="hidden md:inline-block">   
+					<label for="default-search" class="text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+					<div class="relative sm:w-10 md:w-36 lg:w-48 xl:w-96 2xl:w-96">
+						<div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+							<svg class="w-4 h-4 text-gray-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+								<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+							</svg>
+						</div>
+						<input type="search" id="default-search" class="block w-full p-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." required />
+						<button type="submit" class="text-white absolute end-1.5 bottom-1 bg-blue-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-gray-700 dark:hover:bg-gray-800 dark:focus:ring-gray-800">Search</button>
+					</div>
+				</form>
+				<!-- Search -->
+
+
+				<!-- Toggle dark theme switch ---------------------------------------------------------------------------------------------- -->
+				<div class="py-1 px-1 rounded-lg flex items-center bg-white">
+					<label class="switch">
+					  <input type="checkbox" id="darkModeCheckbox">
+					  <span class="slider round"></span>
+					</label>
+				</div>
+				<!-- Toggle dark theme switch ---------------------------------------------------------------------------------------------- -->
+			</div>
+		</nav>
+
+		<slot />
+	</body>
+
+	<script>
+	// Mengimport fungsi toggleDarkMode pada script.js
+	import { toggleDarkMode } from "../script";
+	// Switch Light Dark Theme
+	toggleDarkMode();
+	</script>
+
+</html>

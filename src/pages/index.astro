@@ -1,0 +1,227 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import { Image } from 'astro:assets';
+import logo from '../images/logo/logo.png';
+import header from '../images/jersey/header.jpg';
+import jersey1 from '../images/jersey/1.jpg';
+import jersey2 from '../images/jersey/2.jpg';
+import jersey3 from '../images/jersey/3.jpg';
+import jersey4 from '../images/jersey/4.jpg';
+import jersey5 from '../images/jersey/5.jpg';
+import light from '../images/jersey/light.jpg';
+import dark from '../images/jersey/dark.jpg';
+
+// Astroo Hero Icons
+import Sparkles from 'astro-heroicons/outline/Sparkles.astro';
+import ArchiveBox from 'astro-heroicons/outline/ArchiveBox.astro';
+import ArrowPath from 'astro-heroicons/outline/ArrowPath.astro';
+import Bolt from 'astro-heroicons/outline/Bolt.astro';
+import BookOpen from 'astro-heroicons/outline/BookOpen.astro';
+import BuildingOffice2 from 'astro-heroicons/outline/BuildingOffice2.astro';
+import ChatBubbleLeftRight from 'astro-heroicons/outline/ChatBubbleLeftRight.astro';
+import CreditCard from 'astro-heroicons/outline/CreditCard.astro';
+import Truck from 'astro-heroicons/outline/Truck.astro';
+import Star from 'astro-heroicons/outline/Star.astro';
+
+//Social Media
+import facebook from '../images/logo/facebook.png';
+import linkedin from '../images/logo/linkedin.png';
+import instagram from '../images/logo/instagram.png';
+import tiktok from '../images/logo/tiktok.png';
+import twitter from '../images/logo/twitter.png';
+
+// Import css files
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+---
+
+<Layout title="Astro Jersey Sport">
+	<main class="m-5">
+	
+	<!-- Header ----------------------------------------------------------------------------------------------------------------------------- -->
+	<div class="container flex justify-center shadow-xl h-fit mx-auto m-7 p-7 rounded-lg bg-blue-500 dark:bg-slate-700 dark:text-white">
+		<div class="justify-center items-center gap-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:sm:grid-cols-2 2xl:sm:grid-cols-2">
+			<div class="sm:ml-3 md:ml-4 lg:ml-5 xl:ml-6 2xl:ml-7">
+				<div class="flex flex-nowrap justify-center items-center">
+					<Image src={logo} alt="logo" class="w-16 sm:w-20 md:w-24 lg:w-28 xl:w-32 2xl:w-36"/>
+					<p class="font-bold text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">stro Jersey Sport</p>
+				</div>
+				<div class="mt-3 flex justify-center md:justify-start items-center">
+					<p class="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl">Jersey Olahraga Paling Modis</p>
+				</div>
+			</div>
+
+			<div class="flex justify-center items-center">
+				<Image src={header} alt="logo" width="600" class="flex-shrink-0 rounded-xl"/>
+			</div>
+		</div>
+	</div>
+	<!-- Header ----------------------------------------------------------------------------------------------------------------------------- -->
+
+	<!-- Coursea Slider --------------------------------------------------------------------------------------------------------------------- -->
+	<div id="beranda" class="container relative mx-auto m-7 flex">
+		<div class="container" x-data=`{
+			activeSlide: 1,
+			slides: [
+			{ id: 1, title: 'Jersey Drifit', body: 'Kombinasi bahan yang digunakan dalam pembuatan jersey drifit berupa nilon, campuran katun, dan serat polyester. Maka dari itu, jersey drifit ketika digunakan penggunanya akan terasa adem. Bahan jersey drifit biasanya digunakan pada kaos-kaos olahraga, seperti kaos sepak bola, kaos bulutangkis, dan lain-lain.', image: '${jersey1.src}' },
+			{ id: 2, title: 'Spandek Jersey', body: 'Jenis bahan ini lebih dikenal dengan dengan spandek ITY, sebagian orang menyebut bahan ini berupa spandek jersey Korea. Kain spandek jersey ini sangat dikenal dengan kain yang memiliki permukaan seperti keset, tetapi serat dari kain jenis ini terbilang cukup halus, sehingga nyaman ketika digunakan. Sementara itu, kain dari spandek jersey mempunyai tekstur yang cukup halus atau tidak begitu kasar.', image: '${jersey2.src}' },
+			{ id: 3, title: 'High Twist', body: 'Jika spandek jersey memiliki warna yang kurang mengkilap atau cenderung lembut, maka jenis jersey high twist yang memiliki berbagai jenis warna terutama warna-warna cerah. Variasi warna tersebut kurang lebih sekitar 20-30 varian warna. Selain itu, rajutan dari jenis kain ini terbilang cukup mengkilap. Jenis kain ini memiliki lebar kira-kira 180 cm dan berat pada kain ini berkisar 120 gsm hingga 140 gsm.', image: '${jersey3.src}' },
+			{ id: 4, title: 'Jersey Stella', body: 'Jenis jersey ini bisa dibilang kualitasnya ada satu tingkat di bawah jersey spandek Korea atau jersey spandek ITY. Berat dari jersey stella berkisar 210 gsm, hingga 220 gsm dan lebar dari jenis kain ini kira-kira 160 cm sampai 180 cm. Harganya cukup mahal sebanding dengan kualitasnya, seperti bahannya tidak mudah panas atau cenderung adem, tekstur dari kainnya cukup lembut dan jatuh.', image: '${jersey4.src}' },
+			{ id: 5, title: 'Jersey Serena', body: 'Pada bahan jersey serena permukaan kain sangat lembut. Bahkan, jenis jersey serena bisa dikatakan hampir mendekati kualitas kain yang digunakan oleh merek terkenal, seperti Adidas dan Nike. Jersey serena juga dikenal sebagai kain yang cukup elastis, sehingga ketika berolahraga tidak perlu takut pakaian yang digunakan sobek.', image: '${jersey5.src}' },
+			],
+			loop(){
+				setInterval(() => {this.activeSlide = this.activeSlide === 5 ? 1 : this.activeSlide + 1}, 10000)
+			}
+		}`
+		x-init="loop">
+			<!-- Data Loop -->
+			<template x-for="slide in slides" :key="slide.id">
+				<div x-show="activeSlide === slide.id" class="p-7 w-full flex items-center justify-center shadow-xl text-white rounded-lg bg-orange-500 dark:bg-slate-700 dark:text-white">
+					<div class="w-10/12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-2 gap-5">
+						<div>
+						<h2 class="font-bold sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl text-center lg:text-left xl:text-left 2xl:text-left">BAHAN JERSEY</h2>
+						<h2 class="font-bold sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl text-center lg:text-left xl:text-left 2xl:text-left" x-text="slide.title"></h2>
+						<p x-text="slide.body" class="text-justify sm:text-md md:text-lg lg:text-xl xl:text-1xl 2xl:text-2xl"></p>
+						</div>
+
+						<div class="flex items-center justify-center">
+						<img :src="slide.image" alt="Jersey Image" width="500" class="flex-shrink-0 rounded-xl"/>
+						</div>
+					</div>
+				</div>
+			</template>
+			<!-- Data Loop -->
+
+			<!-- Back/Next -->
+			<div class="absolute inset-0 flex top-15 opacity-60">
+				<div class="flex items-center w-1/2 ml-5">
+					<button 
+					x-on:click="activeSlide = activeSlide === 1 ? slides.length : activeSlide - 1"
+					class="font-bold rounded-full w-12 h-12 shadow-xl flex justify-center transition hover:bg-gray-500 hover:text-white bg-slate-100 text-slate-500">
+						<!-- <ArrowLeftCircle style="height: 50px;" /> -->
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-15 h-15">
+							<path fill-rule="evenodd" d="M10.72 11.47a.75.75 0 0 0 0 1.06l7.5 7.5a.75.75 0 1 0 1.06-1.06L12.31 12l6.97-6.97a.75.75 0 0 0-1.06-1.06l-7.5 7.5Z" clip-rule="evenodd" />
+							<path fill-rule="evenodd" d="M4.72 11.47a.75.75 0 0 0 0 1.06l7.5 7.5a.75.75 0 1 0 1.06-1.06L6.31 12l6.97-6.97a.75.75 0 0 0-1.06-1.06l-7.5 7.5Z" clip-rule="evenodd" />
+						</svg>													
+					</button>
+				</div>
+
+				<div class="flex items-center w-1/2 mr-5 justify-end">
+					<button 
+					x-on:click="activeSlide = activeSlide === slides.length ? 1 : activeSlide + 1"
+					class="font-bold rounded-full w-12 h-12 shadow-xl flex justify-center transition hover:bg-gray-500 hover:text-white bg-slate-100 text-slate-500">
+						<!-- <ArrowRightCircle style="height: 50px;" /> -->
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-15 h-15">
+							<path fill-rule="evenodd" d="M13.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L11.69 12 4.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
+							<path fill-rule="evenodd" d="M19.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06L17.69 12l-6.97-6.97a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
+						</svg>						  
+					</button>
+				</div>
+			</div>
+			<!-- Back/Next -->
+
+			<!-- Buttons -->
+			<div class="absolute w-full flex items-center justify-center px-4">
+				<template x-for="slide in slides" :key="slide.id">
+					<button class="flex-1 w-4 h-2 mt-4 mx-2 mb-2 rounded-full overflow-hidden transition-colors duration-200 ease-out hover:shadow-lg hover:bg-orange-500 dark:bg-slate-700"
+					:class=`{
+						'bg-orange-500 dark:bg-white' : activeSlide === slide.id,
+						'bg-slate-600' : activeSlide !== slide.id,
+					}`
+					x-on:click="activeSlide = slide.id">
+					</button>
+				</template>
+			</div>
+			<!-- Buttons -->
+		</div>
+	</div>
+	<!-- Coursea Slider --------------------------------------------------------------------------------------------------------------------- -->
+	
+	<!-- Promo ----------------------------------------------------------------------------------------------------------------------------- -->
+	<div id="promo" class="container overflow-x-auto shadow-xl h-fit mx-auto m-7 mt-14 p-7 rounded-lg bg-lime-500 dark:bg-slate-700 dark:text-white">
+		<div class="container shadow-xl font-bold w-fit p-3 rounded-r-full sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl dark:text-black bg-white" style="margin-bottom: 20px;">
+			Promo Light & Dark
+		</div>
+
+		<div class="flex space-x-6 overflow-x-auto items-center ">
+			<div class="border-4 border-solid border-white w-full h-full flex p-5 items-center justify-center rounded-r-full">
+				<p class="text-white font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">50% OFF</p>
+			</div>
+			<Image src={light} alt="logo" width="500" class="flex-shrink-0 rounded-xl"/>
+			<Image src={dark} alt="logo" width="500" class="flex-shrink-0 rounded-xl"/>
+		</div>
+	</div>
+	<!-- Promo ----------------------------------------------------------------------------------------------------------------------------- -->
+
+	<!-- About ----------------------------------------------------------------------------------------------------------------------------- -->
+	<div id="about" class="container overflow-x-auto shadow-xl text-white mx-auto m-7 p-7 rounded-lg bg-yellow-500 dark:bg-slate-700 dark:text-white" style="height: 480px;">
+		<div class="text-xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
+			<div class="rounded-lg p-4 shadow-xl flex flex-col items-center text-center justify-center bg-yellow-600 dark:bg-slate-500">
+			<CreditCard style="height: 100px;" /> Support Berbagai Jenis Pembayaran
+			</div>
+
+			<div class="rounded-lg p-4 shadow-xl flex flex-col items-center text-center justify-center bg-yellow-600 dark:bg-slate-500">
+			<BookOpen style="height: 100px;" /> Dibuat Sesuai Pesanan
+			</div>
+
+			<div class="rounded-lg p-4 shadow-xl flex flex-col items-center text-center justify-center bg-yellow-600 dark:bg-slate-500">
+			<Sparkles style="height: 100px;" /> Kualitas Premium
+			</div>
+
+			<div class="rounded-lg p-4 shadow-xl flex flex-col items-center text-center justify-center bg-yellow-600 dark:bg-slate-500">
+			<Bolt style="height: 100px;" /> Pengerjaan Cepat
+			</div>
+			
+			<div class="rounded-lg p-4 shadow-xl flex flex-col items-center text-center justify-center bg-yellow-600 dark:bg-slate-500">
+			<ArchiveBox style="height: 100px;" /> Packing Aman
+			</div>
+
+			<div class="rounded-lg p-4 shadow-xl flex flex-col items-center text-center justify-center bg-yellow-600 dark:bg-slate-500">
+			<Truck style="height: 100px;" /> Support Berbagai Jenis Pengiriman
+			</div>
+
+			<div class="rounded-lg p-4 shadow-xl flex flex-col items-center text-center justify-center bg-yellow-600 dark:bg-slate-500">
+			<ArrowPath style="height: 100px;" /> Garansi Barang Cacat
+			</div>
+
+			<div class="rounded-lg p-4 shadow-xl flex flex-col items-center text-center justify-center bg-yellow-600 dark:bg-slate-500">
+			<BuildingOffice2 style="height: 100px;" /> Kantor Cabang Seluruh Indonesia
+			</div>
+
+			<div class="rounded-lg p-4 shadow-xl flex flex-col items-center text-center justify-center bg-yellow-600 dark:bg-slate-500">
+			<ChatBubbleLeftRight style="height: 100px;" /> Call Center Melayani 24 Jam
+			</div>
+
+			<div class="rounded-lg p-4 shadow-xl flex flex-col items-center text-center justify-center bg-yellow-600 dark:bg-slate-500">
+			<Star style="height: 100px;" /> Penghargaan Produsen Jersey Terbaik
+			</div>
+		</div>
+	</div>
+	<!-- About ----------------------------------------------------------------------------------------------------------------------------- -->
+
+
+	<!-- Footer----------------------------------------------------------------------------------------------------------------------------- -->
+	<div id="about" class="container shadow-xl text-white mx-auto m-7 p-7 flex flex-col sm:flex-row items-center sm:justify-between rounded-lg bg-purple-600 dark:bg-slate-700 dark:text-white">
+		<div class="mb-4 lg:mb-0 text-center sm:text-left md:text-left lg:text-left xl:text-left">
+			<p>© 2014-2024 Copyright:</p>
+			<p>PT. ASTRO JERSEY SPORT INDUSTRI INDONESIA</p>
+		</div>
+
+		<div class="text-xl">
+			<div class="overflow-x-auto grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-5 justify-end gap-4" style="height: 60px;">
+				<Image src={linkedin} alt="logo" width="60" class="flex-shrink-0 rounded-xl shadow-xl border-4 border-purple-400 dark:border-4 dark:border-slate-500"/>
+				<Image src={facebook} alt="logo" width="60" class="flex-shrink-0 rounded-xl shadow-xl border-4 border-purple-400 dark:border-4 dark:border-slate-500"/>
+				<Image src={instagram} alt="logo" width="60" class="flex-shrink-0 rounded-xl shadow-xl border-4 border-purple-400 dark:border-4 dark:border-slate-500"/>
+				<Image src={tiktok} alt="logo" width="60" class="flex-shrink-0 rounded-xl shadow-xl border-4 border-purple-400 dark:border-4 dark:border-slate-500"/>
+				<Image src={twitter} alt="logo" width="60" class="flex-shrink-0 rounded-xl shadow-xl border-4 border-purple-400 dark:border-4 dark:border-slate-500"/>
+			</div>
+		</div>
+	</div>
+	<!-- Footer----------------------------------------------------------------------------------------------------------------------------- -->
+	
+	<!-- Percobaan -->
+	</main>
+
+</Layout>

@@ -1,0 +1,45 @@
+<nav class="sticky shadow-lg z-50 top-0 right-0 left-0 flex flex-wrap p-3 bg-blue-500 m-5 dark:bg-slate-700 text-black rounded-lg">
+	<div class="container flex justify-between">
+		<div class="flex flex-wrap gap-3 items-center justify-between">
+			<div class="flex">
+			<Image src={logo} alt="logo" width="40"/>
+			<p class="font-bold text-white hidden sm:inline-block text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl">stro Jersey Sport</p>
+			</div
+			<!-- Menu tampilan desktop ------------------------------------------------------------------------------------------------- -->
+			<div class="hidden sm:inline-block space-x-4">
+				<a class="py-2 px-3 font-bold hover:bg-gray-400 hover:text-white bg-white rounded-lg" href="#beranda">Beranda</a>
+				<a class="py-2 px-3 font-bold hover:bg-gray-400 hover:text-white bg-white rounded-lg" href="#promo">Promo</a>
+				<a class="py-2 px-3 font-bold hover:bg-gray-400 hover:text-white bg-white rounded-lg" href="#about">About</a>
+			</div>
+			<!-- Menu tampilan desktop ------------------------------------------------------------------------------------------------- --
+			<!-- Menu tampilan mobile -------------------------------------------------------------------------------------------------- -->
+			<div class="sm:hidden inline-block content-center">
+				<button type="button" id="toggleButton" class="relative bg-white font-bold py-2 px-4 rounded dark:bg-slate-400">
+					MENU
+				</button>
+				<div class="relative">
+					<div class="absolute w-full" id="nav">
+						<a class="absolute py-2 px-3 w-full font-bold hover:bg-gray-400 hover:text-white bg-blue-200 rounded dark:bg-slate-400" style="margin-top: 9px" href="#beranda">Beranda</a>
+						<a class="absolute py-2 px-3 w-full font-bold hover:bg-gray-400 hover:text-white bg-blue-200 rounded dark:bg-slate-400" style="margin-top: 58px" href="#promo">Promo</a>
+						<a class="absolute py-2 px-3 w-full font-bold hover:bg-gray-400 hover:text-white bg-blue-200 rounded dark:bg-slate-400" style="margin-top: 107px" href="#about">About</a>
+					</div>
+				</div>
+			</div>
+			<!-- Menu tampilan mobile -------------------------------------------------------------------------------------------------- -->
+		</div
+		<!-- Toggle dark theme switch ---------------------------------------------------------------------------------------------- -->
+		<div class="py-1 px-1 rounded-lg flex items-center bg-white">
+			<label class="switch">
+			  <input type="checkbox" id="darkModeCheckbox">
+			  <span class="slider round"></span>
+			</label>
+		</div>
+		<!-- Toggle dark theme switch ---------------------------------------------------------------------------------------------- -->
+	</div>
+</nav>
+
+
+
+
+
+
