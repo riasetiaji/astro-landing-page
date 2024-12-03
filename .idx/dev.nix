@@ -1,1 +1,55 @@
-{ pkgs, ... }: { # Channel nixpkgs yang digunakan. channel = "stable-24.05"; # atau "unstable" # Gunakan https://search.nixos.org/packages untuk menemukan paket packages = [ # pkgs.go # pkgs.python311 # pkgs.python311Packages.pip # pkgs.nodejs_20 # pkgs.nodePackages.nodemon ]; # Mengatur variabel lingkungan di workspace env = {}; idx = { # Cari ekstensi yang Anda inginkan di https://open-vsx.org/ dan gunakan "publisher.id" extensions = [ # "vscodevim.vim" ]; # Mengaktifkan pratinjau previews = { enable = true; previews = { web = { # Perintah untuk menjalankan server Astro, menyesuaikan perintah ini sesuai kebutuhan Anda command = ["npm", "run", "start"]; manager = "web"; env = { # Mengatur variabel lingkungan untuk server Anda PORT = "$PORT"; }; }; }; }; # Lifecycle hooks workspace workspace = { # Dijalankan ketika workspace pertama kali dibuat onCreate = { # Contoh: menginstal dependensi JS dari NPM npm-install = "npm install"; }; # Dijalankan ketika workspace di(re)start onStart = { # Contoh: memulai tugas latar belakang untuk mengawasi dan membangun ulang kode backend watch-backend = "npm run watch-backend"; }; }; }; }
+# To learn more about how to use Nix to configure your environment
+# see: https://developers.google.com/idx/guides/customize-idx-env
+{ pkgs, ... }: {
+  # Which nixpkgs channel to use.
+  channel = "stable-24.05"; # or "unstable"
+
+  # Use https://search.nixos.org/packages to find packages
+  packages = [
+    # pkgs.go
+    # pkgs.python311
+    # pkgs.python311Packages.pip
+    # pkgs.nodejs_20
+    # pkgs.nodePackages.nodemon
+  ];
+
+  # Sets environment variables in the workspace
+  env = {};
+  idx = {
+    # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
+    extensions = [
+      # "vscodevim.vim"
+    ];
+
+    # Enable previews
+    previews = {
+      enable = true;
+      previews = {
+        # web = {
+        #   # Example: run "npm run dev" with PORT set to IDX's defined port for previews,
+        #   # and show it in IDX's web preview panel
+        #   command = ["npm" "run" "dev"];
+        #   manager = "web";
+        #   env = {
+        #     # Environment variables to set for your server
+        #     PORT = "$PORT";
+        #   };
+        # };
+      };
+    };
+
+    # Workspace lifecycle hooks
+    workspace = {
+      # Runs when a workspace is first created
+      onCreate = {
+        # Example: install JS dependencies from NPM
+        # npm-install = "npm install";
+      };
+      # Runs when the workspace is (re)started
+      onStart = {
+        # Example: start a background task to watch and re-build backend code
+        # watch-backend = "npm run watch-backend";
+      };
+    };
+  };
+}
